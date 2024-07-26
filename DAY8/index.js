@@ -4,12 +4,9 @@ const { teacherRouter } = require('./routes/routes.teacher')
 const app = express();
 
 
-
 //middlware
 app.use('/student', studentRouter)
 app.use('/teacher', teacherRouter)
-
-
 
 
 
