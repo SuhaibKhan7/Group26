@@ -46,17 +46,5 @@
         "first_name": "Salomo",
         "gender": "Male",
         "City": "Zavolzh’ye"
-    },
-    {
-        "id": 9,
-        "first_name": "Pavel",
-        "gender": "Male",
-        "City": "Jimeta"
-    },
-    {
-        "id": 10,
-        "first_name": "Emilio",
-        "gender": "Male",
-        "City": "Basing"
     }
 ]
