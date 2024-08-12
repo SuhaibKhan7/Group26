@@ -1,6 +1,7 @@
 const express = require('express')
 const main = require('./db');
 const studentRouter = require('./routes/student.routes');
+const port = process.env.PORT
 const app = express();
 
 app.use(express.json())
@@ -12,7 +13,7 @@ app.get('/', (req, res) => {
 })
 
 
-app.listen(4001, async () => {
+app.listen(port, async () => {
     await main();
     console.log('Server Connected')
 });
