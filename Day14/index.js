@@ -2,6 +2,10 @@ const express = require('express')
 const main = require('./db')
 const registerRouter = require('./routes/user.registerRoute')
 const app = express()
+
+app.use(express.json())
+
+
 app.use('/register', registerRouter)
 
 app.get('/', (req, res) => {
