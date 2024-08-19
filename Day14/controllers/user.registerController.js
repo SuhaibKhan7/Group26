@@ -1,20 +1,18 @@
 const RegisterModel = require("../models/user.registerModel")
-
 const bcrypt = require('bcrypt');
 
 const createUser = async (req, res) => {
     const { name, pass, cpass, email } = req.body
+    console.log(req.body)
     if (pass != cpass) {
         res.status(400).send('Password missmatch')
     }
     else {
-
         bcrypt.hash(pass, 10, async function (err, hash) {
             if (err) {
                 res.send("Hash not Generated")
             }
-
-            const user = new RegisterModel({ name, hash, email })
+            const user = new RegisterModel({ name, pass: hash, email })
             try {
                 await user.save()
             } catch (error) {
@@ -23,9 +21,6 @@ const createUser = async (req, res) => {
         });
 
     }
-
-
-
     res.send('Register Successfull')
 }
 
