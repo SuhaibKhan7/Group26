@@ -5,7 +5,7 @@ const main = async (req, res) => {
         await mongoose.connect(process.env.DBCON)
         console.log('Database Connected')
     } catch (error) {
-        console.log(err)
+        console.log(error)
     }
 }
 module.exports = main;
