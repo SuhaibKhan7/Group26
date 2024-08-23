@@ -17,7 +17,18 @@ const createUser = async (req, res) => {
         const hash = await bcrypt.hash(pass, 10);
 
         // Create a new user with the hashed password
-        const user = new RegisterModel({ name, pass: hash, email });
+        const user = new RegisterModel({
+            name,
+            pass: hash,
+            email,
+            profileImage: {
+                filename: req.file.filename,
+                path: req.file.path,
+                size: req.file.size,
+                mimetype: req.file.size
+            }
+
+        });
 
         // Save the user to the database
         await user.save();

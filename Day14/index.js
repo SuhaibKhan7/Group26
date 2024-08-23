@@ -11,16 +11,40 @@ app.use(express.json())
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/signup', registerRouter)
+app.use('/signup',  registerRouter)
 app.use('/login', loginRouter)
 app.use('/profile', profileRouter)
 
-app.use('/uploads', (req, res) => {
-
-})
 app.get('/', (req, res) => {
     res.send("This is the homepage")
 })
+
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads')
+    },
+    filename: function (req, file, cb) {
+
+        cb(null, `${Date.now()}-${file.originalname}`)
+    }
+})
+
+const upload = multer({ storage: storage })
+
+app.post('/upload', upload.single('profilepic'), function (req, res, next) {
+    console.log(req.body)
+    console.log(req.file)
+})
+
+
+
+
+
+
+
+
+
 
 app.use((err, req, res, next) => {
     // Ensure the status code is a valid HTTP status code

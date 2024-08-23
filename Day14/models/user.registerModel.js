@@ -19,7 +19,15 @@ const registerSchema = mongoose.Schema({
         //     message: "Email not valid"
         // }
 
+    },
+    profileImage: {
+        filename: { type: String, required: true },
+        path: { type: String, required: true },
+        size: { type: Number, required: true },
+        mimetype: { type: String, required: true }
     }
+
+
 })
 const RegisterModel = mongoose.model('userlist', registerSchema)
 module.exports = RegisterModel

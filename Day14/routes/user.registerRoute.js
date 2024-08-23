@@ -1,11 +1,15 @@
 const express = require('express')
 const { createUser } = require('../controllers/user.registerController')
+const uploadPic = require('../middlewares/user.uploadprofile')
 const registerRouter = express.Router()
 
-const multer = require('multer');
+
 
 
 console.log('signup router')
-registerRouter.post('/', createUser)
+registerRouter.post('/', uploadPic, createUser)
+
+
+
 
 module.exports = registerRouter
